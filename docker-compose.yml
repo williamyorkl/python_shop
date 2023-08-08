@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'shop'
+      MYSQL_PASSWORD: '4643830'
+      MYSQL_ROOT_PASSWORD: '4643830'
+    ports:
+      - 3306:3306
+    volumes:
+      - sdaivideo-db:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+volumes:
+  sdaivideo-db:
+    driver: local
